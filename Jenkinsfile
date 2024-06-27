@@ -12,10 +12,13 @@ pipeline {
         stage('Jenn - Login to Dockerhub'){
             steps{
                withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
+                  sh 'echo "password1" | sudo -S docker login -u jenn-ly@hotmail.com -p ${dockerhubpwd}'
                }
-               withCredentials([string(credentialsId: '6d446734-8a7c-4e4f-b690-160542e259bc', variable: 'dockerhubusername')]) {
-               }
-               sh 'echo "password1" | sudo -S docker login -u ${dockerhubusername} -p ${dockerhubpwd}'
+            }
+        }
+        stage('Jenn - Push image to Dockerhub'){
+            steps{
+               sh 'echo "password1" | sudo -S docker push my-python-app'
             }
         }
     }
