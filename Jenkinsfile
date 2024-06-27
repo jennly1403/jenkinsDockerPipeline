@@ -1,11 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Jenn - Build Docker Image') {
             steps {
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/jennly1403/jenkinsDockerPipeline']])
-                sh 'python3 -m py_compile jenn-project.py'
-                sh 'echo finished compile'
+                sh 'docker build -t my-python-app .'
+                sh 'echo finished building image'
             }
         }
     }
