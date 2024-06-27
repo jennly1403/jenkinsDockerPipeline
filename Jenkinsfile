@@ -18,7 +18,8 @@ pipeline {
         }
         stage('Jenn - Push image to Dockerhub'){
             steps{
-               sh 'echo "password1" | sudo -S docker push my-python-app'
+               sh 'echo "password1" | sudo -S docker tag my-python-app:latest jennly1403/jenkins-project:latest'
+               sh 'echo "password1" | sudo -S docker push jennly1403/jenkins-project:latest'
             }
         }
     }
