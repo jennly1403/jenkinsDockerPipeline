@@ -3,9 +3,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'python -m py_compile jenn-project.py'
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/jennly1403/jenkinsDockerPipeline']])
+                sh 'python3 -m py_compile jenn-project.py'
                 sh 'echo finished compile'
-                stash(name: 'compiled-results', includes: 'sources/*.py*')
             }
         }
     }
