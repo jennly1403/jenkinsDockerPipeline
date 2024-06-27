@@ -15,7 +15,7 @@ pipeline {
                }
                withCredentials([string(credentialsId: '6d446734-8a7c-4e4f-b690-160542e259bc', variable: 'dockerhubusername')]) {
                }
-               sh 'docker login -u ${dockerhubusername} -p ${dockerhubpwd}'
+               sh 'echo "password1" | docker login -u ${dockerhubusername} -p ${dockerhubpwd}'
             }
         }
     }
