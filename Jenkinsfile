@@ -4,6 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'python -m py_compile jenn-project.py'
+                sh 'echo finished compile'
                 stash(name: 'compiled-results', includes: 'sources/*.py*')
             }
         }
